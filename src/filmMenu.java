@@ -13,7 +13,7 @@ public class filmMenu {
 
     public static void menuFilm() {
         System.out.println("MENU - Gestion de films");
-        System.out.println("Appuyer [1] pour ajouter un film , [2] pour voir la liste des films disponible, [3] pour voir la liste des films loués");
+        System.out.println("Appuyer [1] pour ajouter un film ,[2] pour rechercher un film,[3] pour voir la liste des films disponible, [4] pour voir la liste des films loués, [5] pour voir la liste des films par support");
         Integer valChoice = sc.nextInt();
 
         switch(valChoice) {
@@ -21,11 +21,11 @@ public class filmMenu {
             menuAjoutFilm();
             break;
 
-            case 2:
+            case 3:
             menuListeFilmDispo();
             break;
 
-            case 3:
+            case 4:
             menuListeFilmLoue();
             break;
 
@@ -122,8 +122,30 @@ public class filmMenu {
         System.out.println("LISTE DES FILMS LOUES");
         for(int i = 0; i < liste.size(); i++){
             if( ((Film)(liste.elementAt(i))) .getFilmDispo() == false){
-                System.out.println((Film)(liste.elementAt(i)));
+                System.out.println( ((Film)(liste.elementAt(i))).getFilmTitre());
             }
         }
     }
+
+    public static void rechercheFilm() {
+        System.out.println("RECHERCHE DE FILM");
+        boolean filmTrouve;
+        do{
+        filmTrouve = false;
+        System.out.println("Veuillez taper le nom du film recherché");
+        String valRech = sc.next();
+        for(int i = 0; i < liste.size(); i++){
+            if( ((Film)(liste.elementAt(i))) .getFilmTitre() == valRech){
+                System.out.println("Film trouvé");
+                System.out.println( ((Film)(liste.elementAt(i))).getFilmTitre());
+                filmTrouve = true;
+            }
+
+            else{
+                System.out.println("Film non trouvé");
+                filmTrouve = false;
+            }
+        }
+    } while (filmTrouve= false);
+}
 }

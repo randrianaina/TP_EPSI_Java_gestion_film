@@ -30,6 +30,10 @@ public class Film {
         v.addElement(f);
             }
 
+    public String getFilmTitre(){
+        return this.titreFilm;
+    }
+
     public boolean getFilmDispo(){
         return this.dispo;
     }
